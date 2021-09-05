@@ -1,0 +1,65 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Nama game</th>
+      <th>Item</th>
+      <th>Total Harga</th>
+      <th>Status</th>
+      <th>Nama Player</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% transactions.forEach((trx, i)=> { %>
+      <tr>
+        <td>
+          <%= ++i %>
+        </td>
+        <td>
+          <b><%= trx.historyVoucherTopup?.gameName ?? "-" %></b>
+          <span class="badge bg-secondary">
+            <p class="m-0"><%= trx.historyVoucherTopup?.category ?? "-" %></p>
+          </span>
+        </td>
+        <td>
+          <%= trx.historyVoucherTopup?.coinQuantity ?? "-" %> 
+          <%= trx.historyVoucherTopup?.coinName ?? "-" %> 
+        </td>
+        <td>
+          <%= trx.value ?? "-" %> 
+        </td>
+        <td>
+          <% if (trx.status === "success") { %>
+            <span class="badge badge-success">
+              <%= trx.status %> 
+            </span>
+          <% } else if (trx.status === "pending") { %>
+            <span class="badge badge-warning">
+              <%= trx.status %>
+            </span>
+          <% } else { %>
+            <span class="badge badge-danger">
+              <%= trx.status %>
+            </span>
+          <% } %>
+        </td>
+        <td>
+          <%= trx?.player?.name %> 
+        </td>
+        <td>
+          <form action="/transaction/<%= trx._id %>/status?_method=PUT" method="post" class="d-inline-block">
+            <button type="submit" name="status" value="failed" class="btn btn-danger btn-sm"
+              <%= trx.status !== "pending" ? "disabled" : '' %>>
+              <i class="nav-icon fas fa-times"></i> Tolak
+            </button>
+            <button type="submit" name="status" value="success" class="btn btn-success btn-sm"
+              <%= trx.status !== "pending" ? "disabled" : '' %>>
+              <i class="nav-icon fas fa-check"></i> Terima
+            </button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+  </tbody>
+</table>

@@ -1,0 +1,62 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Nama Game</th>
+      <th>Kategori</th>
+      <th>Nominal</th>
+      <th>Status</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% vouchers.forEach((voucher, i)=> { %>
+      <tr>
+        <td>
+          <%= ++i %>
+        </td>
+        <td>
+          <%= voucher.name %>
+        </td>
+        <td>
+          <%= voucher?.category?.name ?? "-" %>
+        </td>
+        <td>
+          <% voucher.nominals?.forEach(nominal => { %>
+            <span class="badge badge-warning">
+              <%= `${nominal.coinName} ${nominal.coinQuantity}`%> 
+            </span>
+          <% }) %>
+        </td>
+        <td>
+          <% if (voucher.status === "Y") { %>
+            <span class="badge badge-success">
+              aktif
+            </span>
+          <% } else { %>
+            <span class="badge badge-danger">
+              nonaktif
+            </span>
+          <% } %>
+        </td>
+        <td>
+          <form action="/voucher/<%= voucher._id %>/status?_method=PUT" method="post" class="d-inline-block">
+            <button type="submit" class="btn btn-primary btn-sm">
+              <% if (voucher.status==="Y" ) { %>
+                <i class="nav-icon fas fa-eye-slash"></i>
+              <% } else { %>
+                <i class="nav-icon fas fa-eye"></i>
+              <% } %>
+            </button>
+          </form>
+          <form action="/voucher/<%= voucher._id %>?_method=DELETE" method="post" class="d-inline-block">
+            <a href="/voucher/<%= voucher._id %>/edit" class="btn btn-info btn-sm">
+              <i class="nav-icon fas fa-pen"></i>
+            </a>
+            <button type="submit" class="btn btn-danger btn-sm"><i class="nav-icon fas fa-trash"></i></button>
+          </form>
+        </td>
+      </tr>
+      <% }) %>
+  </tbody>
+</table>

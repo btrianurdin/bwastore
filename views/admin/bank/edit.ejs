@@ -1,0 +1,73 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+<%- include('../../partials/sidebar') %>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Akun Bank</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="/bank">Akun Bank</a></li>
+            <li class="breadcrumb-item active">Tambah</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                Tambah Akun Bank
+              </h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form action="/bank/<%= bank._id %>?_method=PUT " method="post">
+                <div class="form-group">
+                  <label for="name">Nama Pemilik</label>
+                  <input type="text" id="name" name="name" class="form-control" placeholder="Masukkan Nama Pemilik"
+                    value="<%= bank.name %>" required>
+                </div>
+                <div class="form-group">
+                  <label for="bankName">Nama Bank</label>
+                  <input type="text" id="bankName" name="bankName" class="form-control" 
+                    placeholder="Masukkan Nama Bank" value="<%= bank.bankName %>" required>
+                </div>
+                <div class="form-group">
+                  <label for="noRekening">No. Rekening</label>
+                  <input type="number" id="noRekening" name="noRekening" class="form-control" 
+                    placeholder="Masukkan Nomor Rekening" value="<%= bank.noRekening %>" required>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Tambah</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<%- include('../../partials/footer') %>
+<%- include('../../partials/js') %>
