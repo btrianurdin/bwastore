@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as mongoose from "mongoose";
 import * as path from "path";
+import * as cors from "cors";
 import * as methodOverride from 'method-override';
 import * as cookieParser from 'cookie-parser';
 import * as session from 'express-session';
@@ -42,6 +43,7 @@ class App {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.set("views", path.join(__dirname, "../views"));
     this.app.set("view engine", "ejs");
+    this.app.use(cors());
     this.app.use(
       session({
         secret: "53cR3t",
