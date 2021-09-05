@@ -21,7 +21,7 @@
           <ul>
             <% payment.banks.forEach(bank => { %>
               <li>
-                <%= `${bank.nameBank} ${bank.noRekening} a/n ` %><i><%= bank.name %></i> 
+                <%= `${bank.bankName} ${bank.noRekening} a/n ` %><i><%= bank.name %></i> 
               </li>
             <% }) %>
           </ul>
