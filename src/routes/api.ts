@@ -24,7 +24,7 @@ router
   );
 
 router
-  .get("/auth/signup", multer({ storage: multerStorage }).single("avatar"), ApiAuthController.signup)
-  .get("/auth/signin",  ApiAuthController.signin);
+  .post("/auth/signup", multer({ storage: multerStorage }).single("avatar"), ApiAuthController.signup)
+  .post("/auth/signin",  ApiAuthController.signin);
 
 export default router;
