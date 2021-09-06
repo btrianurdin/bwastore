@@ -37,10 +37,16 @@ export default class PlayerController {
         .populate("category")
         .populate("nominals")
         .populate("user", "_id name phoneNumber");
+      
+      const payments = await Payment.find()
+        .populate('banks');
 
       res.status(200).json({
         status: "success",
-        data: voucher,
+        data: {
+          detail: voucher,
+          payments,
+        },
       });
     } catch (err) {
       res.status(500).json({
