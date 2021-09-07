@@ -31,7 +31,7 @@ export default class DashboardController {
 
       res.status(200).json({
         status: "success",
-        message: {
+        data: {
           count,
           history,
         },
@@ -78,8 +78,10 @@ export default class DashboardController {
 
       res.status(200).json({
         status: "success",
-        data: history,
-        total: totalValue.length ? totalValue[0].value : 0,
+        data: {
+          history,
+          total: totalValue.length ? totalValue[0].value : 0,
+        },
       });
     } catch (err) {
       res.status(500).json({
