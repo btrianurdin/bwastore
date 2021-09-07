@@ -27,7 +27,7 @@ export default class DashboardController {
 
       const history = await Transaction.find({ player: req["player"]["id"] })
         .populate("category")
-        .sort({ updatedAt: 1 });
+        .sort({ updatedAt: -1 });
 
       res.status(200).json({
         status: "success",
