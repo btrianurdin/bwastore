@@ -50,7 +50,7 @@ export default class DashboardController {
 
       let criteria = {};
 
-      if (status.length) {
+      if (status?.length) {
         criteria = {
           ...criteria,
           status: { $regex: `${status}`, $options: "i" },
