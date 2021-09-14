@@ -1,22 +1,12 @@
-# BWASTORE BACKEND
-# Express Application with Typescript and Webpack
+# BWASTORE BACKEND TYPESCRIPT
 
-An example express application that uses typescript and webpack for static files
-
-To run in development mode
-
-```bash
-npm run start:both
+### Akun Login
+[https://bwastore.herokuapp.com/](https://bwastore.herokuapp.com)
 ```
-```bash
-yarn start:both
+email: adminkuy@gmail.com
+password: 123oke
 ```
 
-To build
-
-```bash
-npm run build
-```
-```bash
-yarn build
-```
+### Project Frontend
+[https://bwastore.vercel.app/](https://bwastore.vercel.app/)
+(temporarily repository is private)
